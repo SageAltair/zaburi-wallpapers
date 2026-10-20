@@ -1,0 +1,28 @@
+{
+  "wallpapers": [
+    {
+      "id": "psalm-121-mountain",
+      "title": "Msaada wangu",
+      "category": "Psalms",
+      "imageUrl": "https://sagealtair.github.io/zaburi-wallpapers/images/psalm121.jpeg",
+      "thumbnailUrl": "https://sagealtair.github.io/zaburi-wallpapers/thumbnails/psalm121.jpeg",
+      "sha256": "5b24945acd807e0202ba8e524507d468480e04df5cdf1da133207026a2ab9745"
+    },
+    {
+      "id": "sufficient",
+      "title": "Sitapungukiwa",
+      "category": "Psalms",
+      "imageUrl": "https://sagealtair.github.io/zaburi-wallpapers/images/sufficient.jpeg",
+      "thumbnailUrl": "https://sagealtair.github.io/zaburi-wallpapers/thumbnails/sufficient.jpeg",
+      "sha256": "0fd703763acb62070d1c96dba1756ace8dfe0c70971927db82dcfb03f2f17825"
+    },
+    {
+      "id": "uponami",
+      "title": "Uponami",
+      "category": "Psalms",
+      "imageUrl": "https://sagealtair.github.io/zaburi-wallpapers/images/uponami.jpeg",
+      "thumbnailUrl": "https://sagealtair.github.io/zaburi-wallpapers/thumbnails/uponami.jpeg",
+      "sha256": "557fe47a4741abbdfb23d366d66ba3b9531ebac818526840654eb8c52f2c3f81"
+    }
+  ]
+}

@@ -1,0 +1,1 @@
+Upload this folder to an HTTPS static host at the exact base URL used to build the catalog. Ensure wallpapers.json, images/, and thumbnails/ are publicly readable. Do not upload until artwork distribution rights are documented.
