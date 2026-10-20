@@ -65,7 +65,7 @@ $('themeToggle').onclick=()=>{
  applyTheme(next);
 };
 
-function recoveryRedirect(){return location.origin+location.pathname+'#account'}
+function recoveryRedirect(){return location.origin+location.pathname+'?recovery=1#account'}
 function authFeedback(message,error=false){notice('authStatus',message,error)}
 function setRecoveryMode(active){
  recoveryMode=active;
@@ -105,6 +105,7 @@ $('completeRecovery').onclick=async()=>{
   if(error)throw error;
   $('recoveryPassword').value='';$('recoveryConfirm').value='';
   setRecoveryMode(false);
+  if(location.search.includes('recovery=1'))history.replaceState(null,'',location.pathname+'#account');
   await updateAuth();
   authFeedback('Password updated. Your account is ready.');
  }catch(e){authFeedback(e.message||'Could not update password.',true)}
@@ -112,8 +113,8 @@ $('completeRecovery').onclick=async()=>{
 };
 async function accountAction(buttonId,action,success){
  const button=$(buttonId);button.disabled=true;authFeedback('');
- try{const {error}=await action();if(error)throw error;await updateAuth();authFeedback(success)}
- catch(e){authFeedback(e.message||'Account update failed.',true)}
+ try{const {error}=await action();if(error)throw error;await updateAuth();authFeedback(success);return true}
+ catch(e){authFeedback(e.message||'Account update failed.',true);return false}
  finally{button.disabled=false}
 }
 $('saveProfile').onclick=()=>{
@@ -127,15 +128,15 @@ $('saveEmail').onclick=()=>{
  if(email===user?.email)return authFeedback('This is already your email address.',true);
  accountAction('saveEmail',()=>db.auth.updateUser({email}),'Email change requested. Check your email for confirmation.');
 };
-$('changePassword').onclick=()=>{
+$('changePassword').onclick=async()=>{
  const password=$('newPassword').value,confirm=$('confirmPassword').value;
  if(password.length<8)return authFeedback('Use at least 8 characters.',true);
  if(password!==confirm)return authFeedback('Passwords do not match.',true);
- accountAction('changePassword',()=>db.auth.updateUser({password}),'Password updated.');
- $('newPassword').value='';$('confirmPassword').value='';
+ const updated=await accountAction('changePassword',()=>db.auth.updateUser({password}),'Password updated.');
+ if(updated){$('newPassword').value='';$('confirmPassword').value='';}
 };
 function route(){
- const page=user&&['home','library','account'].includes(location.hash.slice(1))?location.hash.slice(1):user?'home':'account';
+ const page=recoveryMode?'account':user&&['home','library','account'].includes(location.hash.slice(1))?location.hash.slice(1):user?'home':'account';
  for(const id of ['home','library','account'])$(id).classList.toggle('hidden',id!==page);
  for(const [id,target] of [['navHome','home'],['navLibrary','library'],['navAccount','account']])$(id).classList.toggle('active',page===target);
  document.querySelector('.bar b').textContent='Publisher / '+page[0].toUpperCase()+page.slice(1);
