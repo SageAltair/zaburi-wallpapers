@@ -24,3 +24,20 @@
 .nav a{gap:9px}
 .nav a svg{width:16px;height:16px;stroke-width:1.55}
 @media(max-width:700px){.drawer{width:calc(100vw - 18px);max-height:94dvh;overflow-y:auto}.drawer-head{padding:23px 23px 18px}.drawer-head h2{font-size:23px}.drawer-body{padding:19px 23px 0;display:flex;flex-direction:column;gap:0}.drawer-body .drop{height:210px;width:100%;flex:none;margin-bottom:22px}.drawer-body .field{width:100%;margin-bottom:18px}.drawer-body .rights{margin:8px 0 12px}.drawer-actions{padding:16px 23px 22px}.drawer-actions .primary{flex:1;min-width:0}.drawer-actions .secondary{min-width:0}}
+
+/* Classic studio sidebar, with original Zaburi brand asset */
+@media(min-width:701px){
+.app{display:flex;align-items:stretch}
+.side{position:sticky;top:0;height:100vh;width:244px;flex:0 0 244px;display:flex;flex-direction:column;align-items:stretch;gap:0;padding:34px 19px 25px;background:#1e372b;color:#f3f2e8;border:0}
+.side .logo{width:180px;height:80px;max-height:80px;object-position:left center;margin:0 8px 52px}
+.side small{display:block;font-size:10px;letter-spacing:3px;color:#a7b5a6;margin:0 13px 14px}
+.nav{display:flex;flex-direction:column;gap:5px;height:auto;align-items:stretch}
+.nav a{height:auto;display:flex;gap:14px;padding:14px 14px;border:0;border-radius:3px;color:#b8c5b7;font-size:12px;letter-spacing:.02em}
+.nav a:hover,.nav a.active{background:#324b3c;color:#fff;border:0}
+.nav a.active:before{display:none}
+.nav a svg{width:17px;height:17px;flex:none}
+.foot{display:block;margin-top:auto;padding:19px 13px 0;border-top:1px solid #3a5041;color:#9caa9b;letter-spacing:.05em;text-transform:none}
+.main{flex:1;min-width:0}
+.workspace{padding:clamp(48px,5vw,85px) clamp(28px,5vw,88px) 100px}
+}
+@media(min-width:701px) and (max-width:1100px){.side{width:205px;flex-basis:205px;padding-left:12px;padding-right:12px}.side .logo{width:160px}.workspace{padding:55px 32px 90px}}
