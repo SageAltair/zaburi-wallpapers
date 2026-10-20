@@ -145,3 +145,36 @@ body:not(.signed-in) #home,body:not(.signed-in) #insights{display:none!important
 :root[data-theme="dark"] body:not(.signed-in) .app{background:linear-gradient(90deg,#0d2018 0%,#0d2018 43%,#141b17 43%,#141b17 100%)}
 :root[data-theme="dark"] body:not(.signed-in) .auth{box-shadow:0 24px 80px #030b0680}
 @media(max-width:700px){.bar{height:46px;padding:0 20px}.theme-toggle span{display:none}.bar-actions{gap:13px}}
+
+/* Account management */
+body.signed-in #account:not(.hidden){max-width:720px;margin:0;background:transparent;border:0;padding:0}
+#account .account-eyebrow{margin-bottom:14px}
+#account h2{font-family:'Libre Baskerville',Georgia,serif;font-size:clamp(28px,3vw,39px);font-weight:400;letter-spacing:-1.2px}
+#account>p{font-size:13px;margin:12px 0 32px}
+.account-profile{display:flex;align-items:center;gap:18px;padding:24px 0 32px;border-bottom:1px solid #daddd3}
+.account-avatar{width:54px;height:54px;flex:none;border-radius:50%;background:#e3e8df;color:#274534;display:grid;place-items:center;font-family:'Libre Baskerville',Georgia,serif;font-size:22px}
+.account-profile>div:last-child{display:flex;flex-direction:column;gap:3px;min-width:0}
+.account-profile strong{font-size:16px;font-weight:600}
+.account-profile span{font-size:12px;color:#78877b;overflow-wrap:anywhere}
+.account-profile small{font-size:11px;color:#65816c}
+.account-section{padding:30px 0 34px;border-bottom:1px solid #daddd3}
+.account-section h3{font-family:'Libre Baskerville',Georgia,serif;font-size:19px;font-weight:400;margin:0 0 7px}
+.account-section p{font-size:12px;color:#849084;margin:0 0 20px}
+.account-field{display:block;font-size:11px;font-weight:600;color:#627266;margin:0 0 17px;max-width:460px}
+#account .account-field input{display:block;width:100%;margin:8px 0 0;padding:13px 14px;border:1px solid #d8ded5;border-radius:3px;background:#fff;color:#253b2d;font-size:13px;outline:0}
+#account .account-field input:focus{border-color:#76967c}
+.account-section .secondary{padding:12px 18px}
+.account-inline-actions{display:flex;justify-content:space-between;gap:16px;align-items:center}
+#account .account-inline-actions button.link{padding-top:19px}
+#account #loggedOut .primary,#account #resetRequestForm .primary,#account #recoveryForm .primary{width:100%;max-width:460px}
+#account #resetRequestForm>p,#account #recoveryForm>p{font-size:12px;line-height:1.7;color:#7b8b7e}
+#account .notice{margin-top:22px;max-width:550px;line-height:1.6}
+body:not(.signed-in) #account{max-width:460px}
+:root[data-theme="dark"] .account-profile,:root[data-theme="dark"] .account-section{border-color:#35483a}
+:root[data-theme="dark"] .account-avatar{background:#314738;color:#e7eee2}
+:root[data-theme="dark"] .account-profile span,:root[data-theme="dark"] .account-section p,:root[data-theme="dark"] .account-field{color:#abbbaa}
+:root[data-theme="dark"] .account-profile small{color:#a1bba3}
+:root[data-theme="dark"] #account .account-field input{background:#15231b;color:#e9eee7;border-color:#425747}
+:root[data-theme="dark"] #account .account-field input:focus{border-color:#94b398}
+:root[data-theme="dark"] #account h2,:root[data-theme="dark"] .account-section h3{color:#f0eee5}
+@media(max-width:700px){.account-section{padding:24px 0}.account-profile{padding:15px 0 24px}}
