@@ -1,0 +1,38 @@
+name: Sync Supabase wallpapers
+on:
+  schedule:
+    - cron: '*/15 * * * *'
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - 'tooling/sync_supabase_catalog.py'
+      - '.github/workflows/sync-supabase.yml'
+permissions:
+  contents: write
+concurrency:
+  group: zaburi-supabase-sync
+  cancel-in-progress: false
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Sync published Supabase wallpapers
+        env:
+          SUPABASE_PUBLISHABLE_KEY: ${{ secrets.SUPABASE_PUBLISHABLE_KEY }}
+        run: python tooling/sync_supabase_catalog.py
+      - name: Commit catalog
+        run: |
+          if ! git diff --quiet -- wallpapers.json; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add wallpapers.json
+            git commit -m "Sync published Supabase wallpapers"
+            git push
+          fi
